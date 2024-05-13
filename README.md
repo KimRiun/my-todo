@@ -24,3 +24,4 @@ npm start
 ```
 # 기타 정보
 - create-react-app 으로 프로젝트 생성
+- react, javascript
