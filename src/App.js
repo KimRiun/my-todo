@@ -1,11 +1,13 @@
-import logo from './logo.svg';
-import { useState } from 'react';
-import TodoApp from './components/ex04-Todo-App/TodoApp';
+import { TodoProvider } from "./components/ex04-Todo-App/TodoProvider";
+import TodoApp from "./components/ex04-Todo-App/TodoApp";
+import "bootstrap/dist/css/bootstrap.min.css";
 
 function App() {
   return (
     <div className="App">
-      <TodoApp />
+      <TodoProvider>
+        <TodoApp />
+      </TodoProvider>
     </div>
   );
 }
