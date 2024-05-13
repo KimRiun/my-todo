@@ -1,6 +1,8 @@
 # Todo List
 할 일 목록을 만드는 웹 페이지
 
+https://github.com/KimRiun/my-todo/assets/56223389/d26137f8-9fa8-4f95-b221-e95bd87452e1
+
 ## 기능 목록
 1. todo 생성
     - todo 배경색 선택 가능
