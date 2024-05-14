@@ -7,7 +7,7 @@ export default function ColorBar({ onClick }) {
 
   return (
     <div style={{ display: "flex", justifyContent: "center", gap: "8px" }}>
-      {theme.colorList.map((color, i) => {
+      {theme.colorBar.map((color, i) => {
         return <SelectColor key={i} onClick={(i) => onClick(i)} colorId={i} color={color} />;
       })}
     </div>

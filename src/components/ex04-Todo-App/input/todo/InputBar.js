@@ -2,6 +2,7 @@ import React, { useRef, useState } from "react";
 import { useTheme, useTodo } from "../../hook/TodoProvider";
 import ColorBar from "./ColorBar";
 import { PlusCircleFill } from "react-bootstrap-icons";
+import Title from "../Title";
 
 export default function InputBar() {
   const { addTodo } = useTodo();
@@ -24,6 +25,7 @@ export default function InputBar() {
 
   return (
     <div>
+      <Title title="Todo App" />
       <div style={{ display: "flex", justifyContent: "center", textAlign: "center", gap: "4px", margin: "12px" }}>
         <input
           className={theme.name === "dark" ? "theme-dark-input" : ""}
@@ -36,7 +38,7 @@ export default function InputBar() {
             e.key === "Enter" && handleAddTodo();
           }}
           style={{
-            backgroundColor: theme.colorList[colorId],
+            backgroundColor: theme.colorBar[colorId],
             padding: "12px",
             paddingLeft: "16px",
             width: "40%",

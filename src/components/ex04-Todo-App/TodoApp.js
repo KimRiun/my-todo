@@ -21,18 +21,22 @@ export default function TodoApp() {
         padding: "24px",
       }}
     >
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+      <header style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <ThemeRadioButton />
         <SearchBar onClick={setKeyword} />
-      </div>
-      <h1 className="todo-app-header" style={{ margin: "40px", color: theme.text.primary }}>
-        Todo App
-      </h1>
-      <InputBar />
-      <h2 className="todo-app-header" style={{ margin: "40px", color: theme.text.primary, marginTop: "60px" }}>
-        Todo Items
-      </h2>
-      <TodoList keyword={keyword} />
+      </header>
+      <main
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          marginTop: "40px",
+          gap: "40px",
+          color: theme.text.primary,
+        }}
+      >
+        <InputBar />
+        <TodoList keyword={keyword} />
+      </main>
     </div>
   );
 }

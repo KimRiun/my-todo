@@ -5,42 +5,60 @@ import { XCircle } from "react-bootstrap-icons";
 export default function TodoItem({ todo }) {
   const { removeTodo, editTodo } = useTodo();
   const { theme } = useTheme();
-  const [text, setText] = useState(todo.title);
+  const [editMode, setEditMode] = useState(false);
+  const [title, setTitle] = useState(todo.title);
 
   const handleEdit = () => {
-    if (text === "") {
-      setText(todo.title);
+    if (title.trim() === "") {
+      setTitle(todo.title);
+      setEditMode(false);
       return;
     }
-
-    editTodo(todo.id, text);
+    setEditMode(false);
+    editTodo(todo.id, title.trim());
   };
 
   return (
-    <div style={{ display: "flex", justifyContent: "space-around", alignItems: "center", gap: "8px" }}>
+    <li style={{ display: "flex", justifyContent: "space-around", alignItems: "center", gap: "8px" }}>
       <div
         style={{
           width: "100%",
           color: theme.text.primary,
-          backgroundColor: theme.colorList[todo.color],
+          backgroundColor: theme.colorBar[todo.color],
           padding: "12px",
           borderRadius: "4px",
         }}
       >
-        <input
-          type="text"
-          value={text}
-          onChange={(e) => setText(e.target.value)}
-          onBlur={handleEdit}
-          style={{
-            width: "80%",
-            color: theme.text.primary,
-            backgroundColor: "transparent",
-            border: "none",
-            textAlign: "center",
-            outline: "none",
-          }}
-        />
+        {editMode ? (
+          <input
+            type="text"
+            value={title}
+            onChange={(e) => setTitle(e.target.value)}
+            onDoubleClick={(e) => {
+              e.stopPropagation();
+              setEditMode(true);
+            }}
+            autoFocus
+            onBlur={handleEdit}
+            style={{
+              width: "80%",
+              color: theme.text.primary,
+              backgroundColor: "transparent",
+              border: "none",
+              textAlign: "center",
+              outline: "none",
+            }}
+          />
+        ) : (
+          <div
+            onDoubleClick={(e) => {
+              e.stopPropagation();
+              setEditMode(true);
+            }}
+          >
+            {todo.title}
+          </div>
+        )}
       </div>
       <button
         onClick={() => removeTodo(todo.id)}
@@ -48,6 +66,6 @@ export default function TodoItem({ todo }) {
       >
         <XCircle size={20} color="rgb(255 205 205)" />
       </button>
-    </div>
+    </li>
   );
 }

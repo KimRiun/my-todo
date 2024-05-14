@@ -10,17 +10,19 @@ export function TodoProvider({ children }) {
     light: {
       name: "light",
       backgroundColor: "white",
-      colorList: ["#e0ffcd", "#fdffcd", "#ffebbb", "#ffcab0"],
+      colorBar: ["#e0ffcd", "#fdffcd", "#ffebbb", "#ffcab0"],
       text: {
         primary: "black",
+        gray: "gray",
       },
     },
     dark: {
       name: "dark",
       backgroundColor: "rgb(110 110 110)",
-      colorList: ["#c19898", "#d3a284", "#606060", "#58727f"],
+      colorBar: ["#c19898", "#d3a284", "#606060", "#58727f"],
       text: {
         primary: "white",
+        gray: "rgb(231, 225, 222",
       },
     },
   };
