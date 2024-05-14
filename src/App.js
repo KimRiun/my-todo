@@ -1,13 +1,13 @@
-import { TodoProvider } from "./components/ex04-Todo-App/TodoProvider";
-import TodoApp from "./components/ex04-Todo-App/TodoApp";
 import "bootstrap/dist/css/bootstrap.min.css";
+import withUser from "./components/practice/widthUser";
+import UserDisplay from "./components/practice/UserDisplay";
+
+const UserDisplayWithUser = withUser(UserDisplay);
 
 function App() {
   return (
     <div className="App">
-      <TodoProvider>
-        <TodoApp />
-      </TodoProvider>
+      <UserDisplayWithUser userId={1} />
     </div>
   );
 }
