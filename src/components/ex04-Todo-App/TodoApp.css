@@ -5,13 +5,21 @@
   font-style: normal;
 }
 
-.TodoAppHeader {
+.todo-app-header {
   font-family: "Diphylleia-Regular";
 }
 
 .color-item:hover {
   width: 22px !important;
   height: 22px !important;
+}
+
+.theme-dark-input {
+  color: white;
+}
+
+.theme-dark-input::placeholder {
+  color: rgb(231, 225, 222);
 }
 
 .bounce {

@@ -1,13 +1,14 @@
 import React from "react";
 import SelectColor from "./SelectColor";
+import { useTheme } from "../../hook/TodoProvider";
 
 export default function ColorBar({ onClick }) {
-  const colorArr = ["#e0ffcd", "#fdffcd", "#ffebbb", "#ffcab0"];
+  const { theme } = useTheme();
 
   return (
     <div style={{ display: "flex", justifyContent: "center", gap: "8px" }}>
-      {colorArr.map((color, i) => {
-        return <SelectColor key={i} onClick={onClick} color={color} />;
+      {theme.colorList.map((color, i) => {
+        return <SelectColor key={i} onClick={(i) => onClick(i)} colorId={i} color={color} />;
       })}
     </div>
   );

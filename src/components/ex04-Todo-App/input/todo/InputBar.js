@@ -1,12 +1,13 @@
 import React, { useRef, useState } from "react";
-import { useTodo } from "./TodoProvider";
+import { useTheme, useTodo } from "../../hook/TodoProvider";
 import ColorBar from "./ColorBar";
 import { PlusCircleFill } from "react-bootstrap-icons";
 
 export default function InputBar() {
   const { addTodo } = useTodo();
+  const { theme } = useTheme();
   const [title, setTitle] = useState("");
-  const [color, setColor] = useState("#e0ffcd");
+  const [colorId, setColorId] = useState(0);
   const inputRef = useRef(null);
 
   const handleAddTodo = () => {
@@ -17,14 +18,15 @@ export default function InputBar() {
       }, 500);
       return;
     }
-
-    addTodo(title, color);
+    addTodo(title, colorId);
+    setTitle("");
   };
 
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "center", textAlign: "center", gap: "4px", margin: "12px" }}>
         <input
+          className={theme.name === "dark" ? "theme-dark-input" : ""}
           ref={inputRef}
           type="text"
           placeholder="할 일이 무엇인가요?"
@@ -34,7 +36,7 @@ export default function InputBar() {
             e.key === "Enter" && handleAddTodo();
           }}
           style={{
-            backgroundColor: color,
+            backgroundColor: theme.colorList[colorId],
             padding: "12px",
             paddingLeft: "16px",
             width: "40%",
@@ -57,7 +59,7 @@ export default function InputBar() {
           <PlusCircleFill size={24} color="rgb(226 226 226)" />
         </button>
       </div>
-      <ColorBar onClick={setColor} />
+      <ColorBar onClick={setColorId} />
     </div>
   );
 }

@@ -1,7 +1,6 @@
 import React from "react";
 import TodoItem from "./TodoItem";
-import { useTodo } from "./TodoProvider";
-
+import { useTodo } from "../hook/TodoProvider";
 export default function TodoList({ keyword }) {
   const { todoList } = useTodo();
 
@@ -18,9 +17,8 @@ export default function TodoList({ keyword }) {
       }}
     >
       {todoList.length > 0 ? (
-        todoList.map((elem, i) => {
-          if (elem.title.includes(keyword))
-            return <TodoItem key={i} id={i} title={elem.title} color={elem.color}></TodoItem>;
+        todoList.map((todo) => {
+          if (todo.title.includes(keyword)) return <TodoItem key={todo.id} todo={todo}></TodoItem>;
         })
       ) : (
         <p style={{ color: "gray" }}>아직 할 일이 없습니다</p>
